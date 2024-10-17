@@ -1,0 +1,17 @@
+name: Conditional Workflow
+
+on:
+  workflow_dispatch:
+
+# on:
+#   push:
+#     paths:
+#       - 'backend/**'
+
+jobs:
+  conditional-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Backend Image
+        run: |
+          echo "Backend Image is Building..."
