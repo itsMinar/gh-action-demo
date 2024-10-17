@@ -1,0 +1,16 @@
+name: Cron Job Workflow
+
+on:
+  workflow_dispatch:
+# on:
+#   schedule:
+#     - cron: '*/5 * * * *'
+
+jobs:
+  cron-workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: First step
+        run: |
+          echo "Cron Job is working"
