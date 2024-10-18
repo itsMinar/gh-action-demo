@@ -2,6 +2,10 @@ name: Build and Push Docker Image
 
 on:
   workflow_dispatch:
+    inputs:
+      image_tag:
+        description: 'Enter Image tag'
+        required: true
 
 jobs:
   build-and-push:
@@ -18,7 +22,7 @@ jobs:
           docker-username: ${{ vars.DOCKERHUB_USERNAME }}
           docker-token: ${{ secrets.DOCKERHUB_TOKEN }}
           image-name: gh-action-express-app
-          image-tag: v1
+          image-tag: ${{github.event.inputs.image_tag}}
 
       - name: Print result
         run: |
