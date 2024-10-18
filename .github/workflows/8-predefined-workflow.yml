@@ -12,3 +12,8 @@ jobs:
     steps:
       - name: Nodejs Version
         run: node -v
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
