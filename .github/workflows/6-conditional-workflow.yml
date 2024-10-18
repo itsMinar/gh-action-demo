@@ -10,8 +10,4 @@ on:
 
 jobs:
   conditional-job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Build Backend Image
-        run: |
-          echo "Backend Image is Building..."
+    uses: itsMinar/gh-action-demo/.github/workflows/12-reuseable-workflow.yml@main
