@@ -1,0 +1,25 @@
+name: Build and Push Docker Image
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Call the Composite Action
+        id: build_and_push_id
+        uses: ./.github/actions/docker-build-push
+        with:
+          docker-username: ${{ vars.DOCKERHUB_USERNAME }}
+          docker-token: ${{ secrets.DOCKERHUB_TOKEN }}
+          image-name: gh-action-express-app
+          image-tag: v1
+
+      - name: Print result
+        run: |
+          echo "Build and Push result is: ${{steps.build_and_push_id.outputs.result}}"
