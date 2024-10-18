@@ -1,0 +1,17 @@
+name: Script Workflow
+
+# event
+on:
+  workflow_dispatch:
+
+# jobs
+jobs:
+  script-workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Node Script
+        run: node demo.js
