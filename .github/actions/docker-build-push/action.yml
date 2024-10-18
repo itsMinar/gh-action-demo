@@ -14,6 +14,9 @@ inputs:
   image-tag:
     description: 'Docker image tag'
     required: true
+  dockerfile-path:
+    description: 'Dockerfile path'
+    required: true
 
 outputs:
   result:
@@ -41,7 +44,7 @@ runs:
       id: build
       if: steps.login.outputs.result == 'success'
       run: |
-        if docker build -t "${{ inputs.docker-username }}/${{ inputs.image-name }}:${{ inputs.image-tag }}" .; then
+        if docker build -t "${{ inputs.docker-username }}/${{ inputs.image-name }}:${{ inputs.image-tag }}" -f ${{inputs.dockerfile-path}} .; then
           echo "Build Successful"
           echo "result=success" >> $GITHUB_OUTPUT
         else

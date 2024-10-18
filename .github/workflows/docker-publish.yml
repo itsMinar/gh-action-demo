@@ -23,6 +23,7 @@ jobs:
           docker-token: ${{ secrets.DOCKERHUB_TOKEN }}
           image-name: gh-action-express-app
           image-tag: ${{github.event.inputs.image_tag}}
+          dockerfile-path: 'Dockerfile'
 
       - name: Print result
         run: |
